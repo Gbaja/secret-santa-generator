@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.heading{
+  background-image: linear-gradient(rgba(173, 39, 39, 0.7),rgba(0,130,170,.65)), url('./assets/headerbg.jpg');
+  background-position-y: center;
+  text-align: center;
+  padding: 4.5rem 0;
+  color: white;
+}
+.new-draw{
+  display: flex;
+justify-content: space-around;
+margin: 2rem 0;
+flex-direction: column;
+}
+
+.new-draw__form__heading, .new-draw__info-div__heading{
+  font-size: 1.5rem;
+}
+.new-draw__form__labels:not(:last-child) {
+  display: block;
+}
+
+.all-names__container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.all-names__heading {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.all-names__each-div {
+  box-shadow: 5px 7px 25px 4px #888888;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  width: 85%;
+}
+
+.all-names__each-heading{
+  text-transform: uppercase;
+}
+
+.all-names__draw-btn, .new-draw__form__button, .all-names__each-edit, .all-names__each-delete, .all-names__draw-delete-group{
+  padding: 0.5rem;
+  background: red;
+  border: green;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.all-names__each-buttonDiv{
+  text-align: right;
+  width: 100%;
+  border-bottom: 2px solid grey;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+h3{
+  color: green;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .new-draw{
+  flex-direction: row;
+  }
+  .new-draw__info-div{
+    width: 45%;
+  }
+  .new-draw__form{
+    width: 45%;
+  }
+  .all-names__container{
+    flex-direction: row;
+  }
+  .all-names__each-div{
+    width: 38%;
+  }
+}

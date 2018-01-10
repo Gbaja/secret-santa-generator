@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./public/profile.css" />
+  <title>Secret Santa Generator by Fatimat Gbajabiamila</title>
+</head>
+
+<body>
+  <header class="heading">
+    <h1 class="heading__title">Your Secret Santa<span class="heading__username"></span> </h1>
+  </header>
+  <main>
+    <section class="new-draw">
+      <div class="new-draw__info-div">
+        <h3 class="new-draw__info-div__heading"> How it works </h3>
+        <p>Thanks to this special Secret Santa generator you won’t have to deal with all the pre-organizing yourself. You just fill in the blanks and the Secret Santa generator does all the work! </p>
+      </div>
+      <form class="new-draw__form">
+        <h3 class="new-draw__form__heading"> Create new</h3>
+        <p>Please include your name and email address too if you will be participating. </p>
+        <label for="title" class="new-draw__form__labels">Title<input type="text" name="entrytitle" id="title" required  class="new-draw__form__inputs"></label>
+        <label for="name1" class="new-draw__form__labels">Name 1<input type="text" name="entryperson1" id="name1" required  class="new-draw__form__inputs"></label>
+        <label for="email1" class="new-draw__form__labels">Email 1<input type="email" name="entryemail1" id="email1" required  class="new-draw__form__inputs"></label>
+        <label for="name2" class="new-draw__form__labels">Name 2<input type="text" name="entryperson2" id="name2" required  class="new-draw__form__inputs"></label>
+        <label for="email2" class="new-draw__form__labels">Email 2<input type="email" name="entryemail2" id="email2" required  class="new-draw__form__inputs"></label>
+        <label for="name3" class="new-draw__form__labels">Name 3<input type="text" name="entryperson3" id="name3" required  class="new-draw__form__inputs"></label>
+        <label for="email3" class="new-draw__form__labels">Email 3<input type="email" name="entryemail3" id="email3" required  class="new-draw__form__inputs"></label>
+        <div class="new-draw__form__new-inputs">
+        </div>
+          <button type="button" name="addmorenamesbutton" id="addNameButton" class="new-draw__form__button">Add more names</button>
+        <label for="submitBtn" class="new-draw__form__labels"><input type="submit" name="saveNamesbtn" value="Save names" id="submitBtn" class="new-draw__form__button"> </label>
+      </form>
+    </section>
+    <section class="all-names">
+        <h3 class="all-names__heading"> YOUR CURRENT GROUPS </h3>
+        <section class="all-names__container">
+        </section>
+    </section>
+  </main>
+  <script type="text/javascript" src="./public/profile.js"></script>
+</body>
+
+</html>

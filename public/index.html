@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./public/index.css" />
+  <title>Secret Santa Generator by Fatimat Gbajabiamila</title>
+</head>
+
+
+<body>
+  <header class="heading">
+    <h1 class="heading__title"> Secret Santa Generator</h1>
+  </header>
+  <main>
+    <section class="about">
+      <p class="about__info"> Tell your loved ones how much you appreciate them by getting them a present they will love. </p>
+      <p class="about__info"> Why not make it more interesting by randomising the process? This secret santa generator allows you to add the names of everyone in your group and randomly pairs people together. </p>
+      <div class="about__buttons">
+        <button class="about__button"> Log in </button>
+        <button class="about__button"> Register </button>
+      </div>
+    </section>
+    <section class="forms">
+      <section class="login">
+        <button class="forms__back-button"> Back </button>
+        <form class="login__form" id="loginForm">
+          <h1 class="login__form__heading"> Log in</h1>
+          <label for="loginEmail" class="login__labels">Email: <input type="email" name="loginEmail" id="loginEmail" class="login__inputs" required></label>
+          <label for="loginPassword" class="login__labels">Password: <input type="password" name="loginpassword"  id="loginPassword" class="login__inputs" required></label>
+          <p class="login__error"></p>
+          <label for="loginSubmit" class="login__labels"><input type="submit" name="loginsubmit" id="loginSubmit" class="login__inputs submit-button"> </label>
+        </form>
+      </section>
+      <section class="register">
+        <button class="forms__back-button"> Back </button>
+        <form class="register__form" id="registerForm">
+          <h1 class="register__form__heading">Register</h1>
+          <label for="registerUsername" class="register__labels">Username: <input type="text" name="registerusername" id="registerUsername" class="register__inputs" required> </label>
+          <label for="registerName" class="register__labels">Name: <input type="text" name="registerName" id="registerName" class="register__inputs" required> </label>
+          <label for="registerEmail" class="register__labels">Email: <input type="email" name="registeremail" id="registerEmail" class="register__inputs" required> </label>
+          <label for="registerPassword" class="register__labels">Password: <input type="password" name="registerpassword" id="registerPassword" class="register__inputs" required></label>
+          <p class="register__password-error hide-error"> Passwords must contain one uppercase letter, one number, one special case letter(!@#$&*%) and must be a minimum of 8 characters.</p>
+          <label for="registerConfirmPassword" class="register__labels">Confirm password: <input type="password" name="registerconfirmpassword" id="registerConfirmPassword" class="register__inputs" required onkeyup="passwordMatch()"></label>
+          <p class="register__confirm-password-error hide-error"> Passwords do not match. </p>
+          <p class="register__error"></p>
+          <label for="registerSubmit" class="register__labels"><input type="submit" name="registersubmit" value="Register" class="register__inputs submit-button"></label>
+        </form>
+      </section>
+    </section>
+  </main>
+  <script type="text/javascript" src="./public/index.js"></script>
+</body>
+
+</html>

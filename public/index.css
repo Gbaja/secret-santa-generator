@@ -1,0 +1,104 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-size: 100%;
+}
+.heading{
+  background-image: linear-gradient(rgba(173, 39, 39, 0.7),rgba(0,130,170,.65)), url('./assets/headerbg.jpg');
+  background-position-y: center;
+  text-align: center;
+  padding: 4.5rem 0;
+  color: white;
+}
+.heading__title{
+  font-size: 2.3rem;
+  color: white;
+}
+.about__info{
+  color: green;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.3rem 1rem;
+}
+.about__buttons{
+  text-align: center;
+  margin-top: 1rem;
+}
+.about__button, .forms__back-button{
+  background-color: red;
+  color: white;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-color: green;
+}
+.login__form,
+.register__form{
+  text-align: center;
+}
+.login__form__heading,
+.register__form__heading {
+  color: red;
+  font-size: 2rem;
+}
+.login__labels,
+.register__labels{
+  color: green;
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+.login__inputs, .register__inputs{
+  border: 1px solid green;
+  width: 16rem;
+  height: 2rem;
+  display: block;
+  margin: 0 auto;
+  outline: none;
+  font-size: 1.2rem;
+}
+.submit-button{
+  background: red;
+  color: white;
+  font-size: 1.3rem;
+  width: 7rem;
+  height: 3rem;
+  margin-top: 1rem;
+  border-color: green;
+}
+.login, .register{
+  display: none;
+}
+.login__labels,
+.register__labels{
+  display: block;
+}
+.hide-error{
+  display: none;
+  color: green;
+}
+
+.show-error{
+  display: block;
+    color: green;
+}
+
+@media screen and (min-height: 600px) {
+  .heading{
+    padding: 7rem 0;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .heading__title{
+    font-size: 3rem;
+  }
+  .about__info{
+    width: 75%;
+    margin: 2rem auto;
+    font-size: 2rem;
+  }
+  .login__inputs, .register__inputs{
+    width: 30rem;
+  }
+}
