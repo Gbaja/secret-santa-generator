@@ -41,7 +41,6 @@ function postRequest(url, body, displayNamesSection) {
       displayNamesSection.textContent = "Names have been added";
       window.location.href = xhr.getResponseHeader('Location')
     } else if (xhr.readyState === 4 && xhr.status >= 400) {
-      console.log("You do not have an account!");
       displayNamesSection.textContent = xhr.responseText;
     }
   }
@@ -51,16 +50,12 @@ function postRequest(url, body, displayNamesSection) {
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
-  console.log(number);
   var participantsArr = [{
     title: inputTitle.value.toLowerCase()
   }];
   for (var i = 1; i <= number; i++) {
-    console.log("number " + i)
     var inputName = document.getElementById('name' + i)
     var inputEmail = document.getElementById('email' + i)
-    console.log(inputName);
-    console.log(inputEmail);
     participantsArr.push({
       name: inputName.value.toLowerCase(),
       email: inputEmail.value.toLowerCase()
@@ -94,7 +89,6 @@ function postRequest(url, info, displayError) {
     if (xhr.readyState === 4 && xhr.status === 201) {
       window.location.href = xhr.getResponseHeader('Location')
     } else if (xhr.readyState === 4 && xhr.status >= 400) {
-      console.log("You do not have an account!");
       displayError.textContent = xhr.responseText;
     }
   }
@@ -132,13 +126,14 @@ function createNameAndEmailElement(persons, title, div) {
   persons.map(function(person, i) {
     if (title.textContent === person.title) {
       var namePara = document.createElement('p');
-      namePara.textContent = "Name: " + person.name;
+      namePara.textContent = person.name;
       namePara.classList.add("all-names__each-name");
       namePara.id = "partipantName"+i;
       var emailPara = document.createElement('p');
       emailPara.classList.add("all-names__each-email")
-      emailPara.textContent = "Email: " + person.email;
+      emailPara.textContent = person.email;
       emailPara.id = "partipantEmail"+i
+      emailPara.contentEditable = false;
       var buttonDiv = document.createElement('div')
       buttonDiv.classList.add("all-names__each-buttonDiv")
       var editBtn = document.createElement('button');
@@ -154,7 +149,7 @@ function createNameAndEmailElement(persons, title, div) {
       buttonDiv.appendChild(editBtn)
       buttonDiv.appendChild(deleteBtn)
       div.appendChild(buttonDiv)
-
+      editEachPersonClick(editBtn, namePara, emailPara)
       deleteEachPersonClick(deleteBtn);
     }
   })
@@ -173,7 +168,6 @@ function getUniqueTitles(titlesArr){
 }
 
 function displayNames(persons) {
-  console.log(persons);
   if (persons.length === 0) {
     displayNamesSection.textContent = "You currently have no groups."
   }
@@ -194,11 +188,47 @@ function deleteBtnClick(deleteBtn) {
   })
 }
 
-function deleteGroup(deleteBtn){
-  var titleElementText = deleteBtn.parentElement.firstChild.textContent.toLowerCase();
-  var groupTitle = {title: titleElementText};
-  console.log(groupTitle);
-  postRequest("/deleteGroup", JSON.stringify(groupTitle), displayError=null);
+function editEachPersonClick(editButton, nameParagraph, emailParagraph){
+  document.getElementById(editButton.id).addEventListener("click", function() {
+    editEachPerson(editButton, nameParagraph, emailParagraph);
+  })
+}
+
+function editEachPerson(editButton, nameParagraph, emailParagraph){
+  if(editButton.textContent === "Edit"){
+    nameParagraph.contentEditable=true;
+    nameParagraph.style.border = "1px solid black"
+    emailParagraph.contentEditable=true;
+    emailParagraph.style.border = "1px solid black"
+    editButton.textContent = "Save";
+    console.log("hey");
+    console.log(emailParagraph);
+    console.log(nameParagraph);
+
+  } else {
+    saveEdit(editButton, nameParagraph, emailParagraph)
+}
+}
+
+function saveEdit(editButton, nameParagraph, emailParagraph){
+  // var id = editButton.id.split("n")[1];
+  // var email = document.getElementById("partipantEmail"+id).textContent.split(":")[1].trim();
+  // var title = editButton.parentElement.parentElement.firstChild.textContent.toLowerCase();
+  // var info = [
+  //   {email: email},
+  //   {title: title}
+  // ]
+  var title = editButton.parentElement.parentElement.firstChild.textContent.toLowerCase();
+  console.log("title: ", title);
+  console.log("name: ", nameParagraph.textContent);
+  console.log("email: ",emailParagraph.textContent);
+  var info = [
+    {title: title},
+    {email: emailParagraph.textContent},
+    {title: nameParagraph.textContent}
+  ]
+  console.log(info);
+  postRequest("/editPerson", JSON.stringify(info), displayError=null);
 }
 
 function deleteEachPersonClick(deleteButton){
@@ -215,8 +245,13 @@ function deleteEachPerson(deleteButton){
     {email: email},
     {title: title}
   ]
-  console.log(JSON.stringify(info));
+  console.log(info);
   postRequest("/deletePerson", JSON.stringify(info), displayError=null);
+}
+function deleteGroup(deleteBtn){
+  var titleElementText = deleteBtn.parentElement.firstChild.textContent.toLowerCase();
+  var groupTitle = {title: titleElementText};
+  postRequest("/deleteGroup", JSON.stringify(groupTitle), displayError=null);
 }
 
 function sendDrawInfo(drawBtn){
@@ -228,6 +263,5 @@ function sendDrawInfo(drawBtn){
        namesArr.push(el.textContent.split(":")[1].trim().toLowerCase())
     }
   })
-  console.log(namesArr);
   postRequest("/drawNames", JSON.stringify(namesArr), displayError=null);
 }

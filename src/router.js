@@ -8,7 +8,8 @@ const {
   allUserGroupAndNames,
   drawNamesHandler,
   deleteGroupHandler,
-  deletePersonHandler
+  deletePersonHandler,
+  editPersonHandler
 } = require('./handler.js');
 
 const router = (request, response) => {
@@ -33,6 +34,8 @@ const router = (request, response) => {
   }
   else if (endpoint.indexOf('/drawNames') !== -1) {
     drawNamesHandler(request, response, endpoint)
+  } else if (endpoint.indexOf('/editPerson') !== -1) {
+    editPersonHandler(request, response, endpoint)
   } else if (endpoint.indexOf('/deletePerson') !== -1) {
     deletePersonHandler(request, response, endpoint)
   }
