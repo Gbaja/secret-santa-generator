@@ -314,6 +314,17 @@ const deletePersonHandler = (request, response, endpoint) => {
     })
   })
 }
+const editPersonHandler = (request, response, endpoint) => {
+  const decoded = jwt.verify(cookie.parse(request.headers.cookie).Token, secret);
+  let editData = '';
+  request.on('data', (data) => {
+    editData += data;
+  })
+  request.on('end', () => {
+    editData = JSON.parse(editData);
+    console.log(editData);
+  })
+}
 module.exports = {
   homeHandler,
   staticHandler,
@@ -324,5 +335,6 @@ module.exports = {
   allUserGroupAndNames,
   drawNamesHandler,
   deleteGroupHandler,
-  deletePersonHandler
+  deletePersonHandler,
+  editPersonHandler
 }

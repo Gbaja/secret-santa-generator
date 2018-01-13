@@ -48,6 +48,9 @@ flex-direction: column;
 .all-names__each-heading{
   text-transform: uppercase;
 }
+.all-names__each-email, .all-names__each-name{
+  margin-bottom: 0.5rem;
+}
 
 .all-names__draw-btn, .new-draw__form__button, .all-names__each-edit, .all-names__each-delete, .all-names__draw-delete-group{
   padding: 0.5rem;
