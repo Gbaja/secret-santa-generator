@@ -188,13 +188,14 @@ function deleteBtnClick(deleteBtn) {
   })
 }
 
-function editEachPersonClick(editButton, nameParagraph, emailParagraph){
+function editEachPersonClick(editButton, nameParagraph, emailParagraph, previousEmail){
   document.getElementById(editButton.id).addEventListener("click", function() {
-    editEachPerson(editButton, nameParagraph, emailParagraph);
+    editEachPerson(editButton, nameParagraph, emailParagraph, previousEmail);
   })
 }
-
+  
 function editEachPerson(editButton, nameParagraph, emailParagraph){
+    var previousEmail = emailParagraph.textContent;
   if(editButton.textContent === "Edit"){
     nameParagraph.contentEditable=true;
     nameParagraph.style.border = "1px solid black"
@@ -202,22 +203,17 @@ function editEachPerson(editButton, nameParagraph, emailParagraph){
     emailParagraph.style.border = "1px solid black"
     editButton.textContent = "Save";
     console.log("hey");
-    console.log(emailParagraph);
-    console.log(nameParagraph);
+    console.log(emailParagraph.textContent);
+    console.log(nameParagraph.textContent);
 
+      console.log("previousEmail if: ", previousEmail);
   } else {
-    saveEdit(editButton, nameParagraph, emailParagraph)
+    console.log("previousEmail else: ", previousEmail);
+    saveEdit(editButton, nameParagraph, emailParagraph, emailParagraph.textContent)
 }
 }
 
-function saveEdit(editButton, nameParagraph, emailParagraph){
-  // var id = editButton.id.split("n")[1];
-  // var email = document.getElementById("partipantEmail"+id).textContent.split(":")[1].trim();
-  // var title = editButton.parentElement.parentElement.firstChild.textContent.toLowerCase();
-  // var info = [
-  //   {email: email},
-  //   {title: title}
-  // ]
+function saveEdit(editButton, nameParagraph, emailParagraph, previousEmail){
   var title = editButton.parentElement.parentElement.firstChild.textContent.toLowerCase();
   console.log("title: ", title);
   console.log("name: ", nameParagraph.textContent);
@@ -225,7 +221,8 @@ function saveEdit(editButton, nameParagraph, emailParagraph){
   var info = [
     {title: title},
     {email: emailParagraph.textContent},
-    {title: nameParagraph.textContent}
+    {name: nameParagraph.textContent},
+    {previousEmail: previousEmail}
   ]
   console.log(info);
   postRequest("/editPerson", JSON.stringify(info), displayError=null);
