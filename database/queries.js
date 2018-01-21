@@ -120,6 +120,10 @@ const getParticipantsDetails = (email, cb) => {
   })
 }
 
+const editPersonInfo = (userid, title, name, email, cb) =>{
+  dbConnection.query('UPDATE names SET name = $3, email = $4 WHERE email = $1 AND userid = $2 AND groupid = (SELECT id FROM groups WHERE title = $3)')
+}
+
 module.exports = {
   registerUser,
   checkUserExits,
