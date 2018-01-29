@@ -23,6 +23,36 @@ Built with postgresql, nodejs, javascript, html and css.
 
 Npm modules nodemailer, bcryptjs, 
 
+## Running our project locally
+Our project is hosted on Heroku, but if you would like to run it locally please follow these instructions:
+
+### Requirements
+
+PostgreSQL, Node
+
+### Installation
+
+`git clone https://github.com/Gbaja/secret-santa-generator.git` 
+
+Switch to the directory
+
+`cd secret-santa-generator` 
+
+Install dependencies
+
+`npm i`
+
+Environment variables 
+
+Create a config.env file in the root directory with the following environment variables:
+
+`DATABASE_URL = [a url to a PostgreSQL Database, setup with our db_build.sql]`
+`SECRET = [a secret sequence of letters / numbers for signing JWT tokens]`
+
+Run a Dev Server
+
+`npm run dev`
+
 ## Thoughts
 
 The main thing I was hoping to get out of this project was to understand the relations between front end, backend and how to use database to save and retrieve data. It was a good insight into how it all fits together. At first, I was confused about making an XMLHttRequest to get or post data to be used in the back end. This is because a url to me had always been a website one but by making this web app, I was able to familiarise myself with the concept. 
