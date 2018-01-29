@@ -47,6 +47,7 @@ Environment variables
 Create a config.env file in the root directory with the following environment variables:
 
 `DATABASE_URL = [a url to a PostgreSQL Database, setup with our db_build.sql]`
+
 `SECRET = [a secret sequence of letters / numbers for signing JWT tokens]`
 
 Run a Dev Server
